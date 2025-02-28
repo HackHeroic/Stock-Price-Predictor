@@ -1,0 +1,67 @@
+# Stock Price Prediction using LSTM
+
+This repository contains a Long Short-Term Memory (LSTM) neural network for predicting stock prices using historical data. The model is trained on stock price data and uses deep learning techniques to make future predictions.
+
+## 📌 Features
+- Uses **LSTM** for time-series prediction
+- **Fetches real-time stock data** using `yfinance`
+- Scales data using `MinMaxScaler` for better LSTM performance
+- **Predicts next day's stock price**
+- **Visualizes predictions** against actual stock prices
+
+---
+
+## 🛠 Installation & Setup
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/stock-price-prediction-lstm.git
+cd stock-price-prediction-lstm
+```
+---
+
+## 🚀 Usage
+
+### 1️⃣ Train the Model
+Run the script to train the LSTM model:
+```bash
+python predictorBot.py
+```
+
+### 2️⃣ Test & Predict
+After training, the model will evaluate on test data and plot predictions.
+
+To predict the next day's stock price:
+```bash
+python predict.py
+```
+
+---
+
+## 🏗 Model Architecture
+```python
+model = models.Sequential()
+model.add(LSTM(units=50, return_sequences=True, input_shape=(x_train.shape[1], 1)))  # First LSTM layer
+model.add(Dropout(0.2))
+model.add(LSTM(units=50, return_sequences=True))  # Second LSTM layer
+model.add(Dropout(0.2))
+model.add(LSTM(units=50))  # Third LSTM layer
+model.add(Dropout(0.2))
+model.add(Dense(units=1))  # Output layer
+model.compile(optimizer='adam', loss='mean_squared_error')
+```
+
+### 🔹 Layers Explained
+- **LSTM:** Learns time-based dependencies from stock prices.
+- **Dropout:** Prevents overfitting by randomly disabling neurons.
+- **Dense:** Outputs the predicted stock price.
+
+---
+
+## 📊 Results
+The model will generate a plot comparing actual vs. predicted prices:
+- **Black Line:** Actual stock price
+- **Green Line:** Predicted stock price
+
+
+
